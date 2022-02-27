@@ -1,0 +1,31 @@
+CREATE TEMPORARY TABLE  DesafioTécnico(
+	infração INT NOT NULL,
+	data_hora TIMESTAMP NOT NULL,
+	equipamento VARCHAR(99) NOT NULL,
+	velocidade_perm INT NOT NULL,
+	velocidade_medi INT NOT NULL,
+	val_inval BOOL
+);
+INSERT INTO DesafioTécnico (infração, data_hora, equipamento, velocidade_perm, velocidade_medi, val_inval)
+VALUES
+	 	(268512, '2022-02-24 13:52:33', 'equipamento1', 80, 90, '1'),
+		(567856, '2022-02-23 14:48:24', 'equipamento1', 100, 130, '0'),
+		(762648, '2019-01-26 13:52:33', 'equipamento3', 80, 143, '0'),
+		(346845, '2018-02-19 13:52:33', 'equipamento2', 100, 108, '1'),
+		(169875, '2020-04-05 13:52:33', 'equipamento2', 80, 87, '1'),
+		(654850, '2021-04-13 13:52:33', 'equipamento1', 80, 93, '1'),
+		(864213, '2021-03-17 13:52:33', 'equipamento3', 80, 98, '0'),
+		(031249, '2022-09-20 13:52:33', 'equipamento2', 100, 114, '1'),
+		(947513, '2019-07-22 13:52:33', 'equipamento4', 100, 117, '1'),
+		(264851, '2018-08-03 13:52:33', 'equipamento4', 80, 134, '0'),
+		(985485, '2021-12-31 23:34:33', 'equipamento3', 100, 150, '0');
+SELECT
+	infração,
+	velocidade_medi,
+	data_hora
+FROM 
+	DesafioTécnico
+WHERE
+	velocidade_medi>velocidade_perm*1.2
+ORDER BY
+	data_hora;

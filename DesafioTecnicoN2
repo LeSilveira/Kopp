@@ -1,0 +1,36 @@
+CREATE TEMPORARY TABLE  DesafioTécnicoN2
+(
+	remessa INT NOT NULL,
+	infração INT NOT NULL,
+	válidas BOOL NOT NULL,
+	inválidas BOOL NOT NULL,
+	situação_remessa VARCHAR (99) NOT NULL
+);
+INSERT INTO DesafioTécnicoN2 (remessa, infração, válidas, inválidas, situação_remessa)
+VALUES		
+		(98458615, 268512, '1', '0', 'Aceita'),
+		(94857116, 567856, '0', '1', 'Criada'),
+		(94857116, 762648, '0', '1', 'Criada'),
+		(78548512, 346845, '1', '0', 'Expedida'),
+		(78548512, 169875, '1', '0', 'Expedida'),
+		(98458615, 654850, '1', '0', 'Aceita'),
+		(94857116, 864213, '0', '1', 'Criada'),
+		(78548512, 031249, '1', '0', 'Expedida'),
+		(51321682, 947513, '1', '0', 'Nao Aceita'),
+		(51321682, 264851, '0', '1', 'Nao Aceita'),
+		(94857116, 985485, '0', '1', 'Criada');
+
+
+SELECT
+	remessa,
+	COUNT (infração) AS total_infrações,
+	situação_remessa AS situação,
+	COUNT (válidas) AS válidas,
+	COUNT (inválidas) AS inválidas
+FROM
+	DesafioTécnicoN2
+GROUP BY 
+	situação_remessa,
+	remessa
+ORDER BY
+	situação_remessa
